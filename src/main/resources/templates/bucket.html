@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:insert="blocks/headinfo :: headinfo"></div>
+    <title>Bucket</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<h2>Your bucket</h2>
+<h3>All sum -><b th:text="${bucket.sum}">$0.0</b></h3>
+<table border="1" align="center">
+    <tr>
+        <td>Title</td>
+        <td>Amount</td>
+        <td>Price</td>
+        <td>Sum</td>
+        <td></td>
+    </tr>
+    <tr th:each="detail : ${bucket.bucketDetailsDTOS}">
+        <td th:text="${detail.title}">Book title</td>
+        <td th:text="${detail.amount}">amounts</td>
+        <td th:text="${detail.price}">$0.0</td>
+        <td th:text="${detail.sum}">$0.0</td>
+        <td><a href="#">Remove</a></td>
+    </tr>
+</table>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

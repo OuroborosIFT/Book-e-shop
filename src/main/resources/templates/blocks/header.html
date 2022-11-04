@@ -1,0 +1,31 @@
+<div th:fragment="header">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a th:href="@{/}" class="nav-link px-2 link-dark">Home</a></li>
+                <li><a th:href="@{/authors}" class="nav-link px-2 link-dark">Authors</a></li>
+                <li><a th:href="@{/books}" class="nav-link px-2 link-dark">Books</a></li>
+                <li><a th:href="@{/genres}" class="nav-link px-2 link-dark">Genres</a></li>
+                <li sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')"><a th:href="@{/users}" class="nav-link px-2 link-dark">Users</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/bucket}" class="nav-link px-2 link-dark">Bucket</a></li>
+<!--                <li><a th:href="@{/login}" class="nav-link px-2 link-dark">Login</a></li>-->
+            </ul>
+
+        </div>
+        <div align="right">
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/users/profile}"><span sec:authentication="principal.username"></span></a>
+                <a th:href="@{/logout}" class="nav-link px-2 link-dark">Logout</a>
+            </div>
+
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}" class="nav-link px-2 link-dark">Login</a>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:insert="blocks/headinfo :: headinfo"></div>
+    <title>Authors</title>
+    <style>
+        .alter {
+            padding: 20px;
+            margin: 20px;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container">
+    <div th:each="author : ${authors}" class="alter">
+        <h6 th:text="${author.name}">Author name</h6>
+        <h6 th:text="${author.lastName}">Author lastName</h6>
+        <h6 th:text="${author.patronymic}">Author patronymic</h6>
+        <img th:src="${author.portrait}" alt="Author portrait" height="100px"/>
+        <p th:text="${author.about}">About author</p>
+    </div>
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>
