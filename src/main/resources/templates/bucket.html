@@ -18,13 +18,17 @@
         <td></td>
     </tr>
     <tr th:each="detail : ${bucket.bucketDetailsDTOS}">
-        <td th:text="${detail.title}">Book title</td>
+        <td th:text="${detail.title}">title</td>
         <td th:text="${detail.amount}">amounts</td>
         <td th:text="${detail.price}">$0.0</td>
         <td th:text="${detail.sum}">$0.0</td>
-        <td><a href="#">Remove</a></td>
+        <td><a th:href="@{/bucket/{id}/book(id=${detail.bookId})}">Remove</a></td>
     </tr>
 </table>
+
+<form th:action="@{/bucket}" method="post">
+    <button type="submit">Create Order</button>
+</form>
 
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>

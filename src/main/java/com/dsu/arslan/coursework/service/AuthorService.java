@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface AuthorService {
     List<AuthorDTO> getAllAuthors();
+    AuthorDTO getById(Long id);
+    void addAuthor(AuthorDTO authorDTO);
+
 }

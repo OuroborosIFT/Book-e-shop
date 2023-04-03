@@ -8,7 +8,8 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
-    boolean save(UserDTO userDTO);  // сохраняет пользователя в базу
+    // сохраняет пользователя в базу
+    boolean save(UserDTO userDTO);
     void save(User user);
     List<UserDTO> getAll();
     User findByUsername(String username);

@@ -1,3 +1,7 @@
+/**
+ * Содержит информацию о книгах которую выводят на старанице bucket.html
+ * */
+
 package com.dsu.arslan.coursework.dto;
 
 import com.dsu.arslan.coursework.domain.Book;
@@ -12,18 +16,18 @@ import lombok.NoArgsConstructor;
 @Builder
 public class BucketDetailsDTO {
 
-    private String title;
     private Long bookId;
+    private String title;
     private Double price;
     private Integer amount;
     private Double sum;
 
     public BucketDetailsDTO(Book book) {
+        this.bookId = book.getId();
         this.title = book.getTitle();
-        this.bookId = getBookId();
         this.price = book.getPrice();
-        this.amount = Integer.valueOf("1");
-        this.sum = Double.valueOf(book.getPrice().toString());
+        this.amount = 1;
+        this.sum = book.getPrice();
     }
 
 }

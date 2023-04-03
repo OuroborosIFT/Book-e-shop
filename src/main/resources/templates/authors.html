@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-
-  <head>
-  <div th:insert="blocks/headinfo :: headinfo"></div>
-
-  <title>Sixteen Clothing Products</title>
+<head>
+    <div th:insert="blocks/headinfo :: headinfo"></div>
+    <title>Авторы</title>
+    <!--STOMP-->
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <!--app.js dependance: jquery-->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/authors.js"></script>
 </head>
 
-  <body>
+<body>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
 
-    <!-- Header -->
-    <header th:insert="blocks/header :: header"></header>
+<!-- Header -->
+<header th:insert="blocks/header :: header"></header>
 <!--    <header class="">-->
 <!--      <nav class="navbar navbar-expand-lg">-->
 <!--        <div class="container">-->
@@ -50,295 +54,292 @@
 <!--      </nav>-->
 <!--    </header>-->
 
-    <!-- Page Content -->
-    <div class="page-heading about-heading header-text">
-      <div class="container">
+<!-- Page Content -->
+<div class="page-heading about-heading header-text">
+    <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="text-content">
-              <h4>about us</h4>
-              <h2>our company</h2>
+            <div class="col-md-12">
+                <div class="text-content">
+                    <h4>about us</h4>
+                    <h2>our company</h2>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-
-
-    <div class="best-features about-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Our Background</h2>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="/assets/images/feature-image.jpg" alt="">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <h4>Who we are &amp; What we do?</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis.</p>
-              <ul class="social-icons">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-    <div class="team-members">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Our Team Members</h2>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="/assets/images/team_01.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="down-content">
-                <h4>Johnny William</h4>
-                <span>CO-Founder</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="/assets/images/team_02.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="down-content">
-                <h4>Karry Pitcher</h4>
-                <span>Product Expert</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="/assets/images/team_03.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="down-content">
-                <h4>Michael Soft</h4>
-                <span>Chief Marketing</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="/assets/images/team_04.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="down-content">
-                <h4>Mary Cool</h4>
-                <span>Product Specialist</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="/assets/images/team_05.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="down-content">
-                <h4>George Walker</h4>
-                <span>Product Photographer</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="/assets/images/team_06.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="down-content">
-                <h4>Kate Town</h4>
-                <span>General Manager</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="services">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-gear"></i>
-              </div>
-              <div class="down-content">
-                <h4>Product Management</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
-                <a href="#" class="filled-button">Read More</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-gear"></i>
-              </div>
-              <div class="down-content">
-                <h4>Customer Relations</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
-                <a href="#" class="filled-button">Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-item">
-              <div class="icon">
-                <i class="fa fa-gear"></i>
-              </div>
-              <div class="down-content">
-                <h4>Global Collection</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>
-                <a href="#" class="filled-button">Read More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="happy-clients">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Happy Partners</h2>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="owl-clients owl-carousel">
-              <div class="client-item">
-                <img src="/assets/images/client-01.png" alt="1">
-              </div>
-              
-              <div class="client-item">
-                <img src="/assets/images/client-01.png" alt="2">
-              </div>
-              
-              <div class="client-item">
-                <img src="/assets/images/client-01.png" alt="3">
-              </div>
-              
-              <div class="client-item">
-                <img src="/assets/images/client-01.png" alt="4">
-              </div>
-              
-              <div class="client-item">
-                <img src="/assets/images/client-01.png" alt="5">
-              </div>
-              
-              <div class="client-item">
-                <img src="/assets/images/client-01.png" alt="6">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <footer th:insert="blocks/footer :: footer"></footer>
-    <div th:insert="blocks/scripts :: scripts"></div>
-
-
-  </body>
-
-</html>
-
-<div class="container">
-  <div th:each="author : ${authors}" class="alter">
-    <h6 th:text="${author.name}">Author name</h6>
-    <h6 th:text="${author.lastName}">Author lastName</h6>
-    <h6 th:text="${author.patronymic}">Author patronymic</h6>
-    <img th:src="${author.portrait}" alt="Author portrait" height="100px"/>
-    <p th:text="${author.about}">About author</p>
-  </div>
 </div>
 
+<div class="team-members">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Авторы</h2>
+                </div>
+            </div>
+
+            <div th:each="author : ${authors}" class="col-md-4">
+                <div class="team-member">
+                    <div class="thumb-container">
+                        <img th:src="${author.portrait}" alt="author">
+                        <!--                <div class="hover-effect">-->
+                        <!--                  <div class="hover-content">-->
+                        <!--                    <ul class="social-icons">-->
+                        <!--                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+                        <!--                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+                        <!--                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+                        <!--                      <li><a href="#"><i class="fa fa-behance"></i></a></li>-->
+                        <!--                    </ul>-->
+                        <!--                  </div>-->
+                        <!--                </div>-->
+                    </div>
+                    <div class="down-content">
+                        <h4 th:text="${author.name}">Author name</h4>
+                        <h4 th:text="${author.lastName}">Author lastName</h4>
+                        <h4 th:text="${author.patronymic}">Author patronymic</h4>
+                        <!--                <span>CO-Founder</span>-->
+                        <p th:text="${author.about}">Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis
+                            nulla.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!--          <div class="container">-->
+            <!--            <div th:each="author : ${authors}" class="alter">-->
+            <!--              <h6 th:text="${author.name}">Author name</h6>-->
+            <!--              <h6 th:text="${author.lastName}">Author lastName</h6>-->
+            <!--              <h6 th:text="${author.patronymic}">Author patronymic</h6>-->
+            <!--              <img th:src="${author.portrait}" alt="Author portrait" height="100px"/>-->
+            <!--              <p th:text="${author.about}">About author</p>-->
+            <!--            </div>-->
+            <!--          </div>-->
+
+
+            <!--          <div class="col-md-4">-->
+            <!--            <div class="team-member">-->
+            <!--              <div class="thumb-container">-->
+            <!--                <img src="/assets/images/team_02.jpg" alt="">-->
+            <!--                <div class="hover-effect">-->
+            <!--                  <div class="hover-content">-->
+            <!--                    <ul class="social-icons">-->
+            <!--                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-behance"></i></a></li>-->
+            <!--                    </ul>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--              <div class="down-content">-->
+            <!--                <h4>Karry Pitcher</h4>-->
+            <!--                <span>Product Expert</span>-->
+            <!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--          <div class="col-md-4">-->
+            <!--            <div class="team-member">-->
+            <!--              <div class="thumb-container">-->
+            <!--                <img src="/assets/images/team_03.jpg" alt="">-->
+            <!--                <div class="hover-effect">-->
+            <!--                  <div class="hover-content">-->
+            <!--                    <ul class="social-icons">-->
+            <!--                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-behance"></i></a></li>-->
+            <!--                    </ul>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--              <div class="down-content">-->
+            <!--                <h4>Michael Soft</h4>-->
+            <!--                <span>Chief Marketing</span>-->
+            <!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--          <div class="col-md-4">-->
+            <!--            <div class="team-member">-->
+            <!--              <div class="thumb-container">-->
+            <!--                <img src="/assets/images/team_04.jpg" alt="">-->
+            <!--                <div class="hover-effect">-->
+            <!--                  <div class="hover-content">-->
+            <!--                    <ul class="social-icons">-->
+            <!--                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-behance"></i></a></li>-->
+            <!--                    </ul>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--              <div class="down-content">-->
+            <!--                <h4>Mary Cool</h4>-->
+            <!--                <span>Product Specialist</span>-->
+            <!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--          <div class="col-md-4">-->
+            <!--            <div class="team-member">-->
+            <!--              <div class="thumb-container">-->
+            <!--                <img src="/assets/images/team_05.jpg" alt="">-->
+            <!--                <div class="hover-effect">-->
+            <!--                  <div class="hover-content">-->
+            <!--                    <ul class="social-icons">-->
+            <!--                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-behance"></i></a></li>-->
+            <!--                    </ul>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--              <div class="down-content">-->
+            <!--                <h4>George Walker</h4>-->
+            <!--                <span>Product Photographer</span>-->
+            <!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--          <div class="col-md-4">-->
+            <!--            <div class="team-member">-->
+            <!--              <div class="thumb-container">-->
+            <!--                <img src="/assets/images/team_06.jpg" alt="">-->
+            <!--                <div class="hover-effect">-->
+            <!--                  <div class="hover-content">-->
+            <!--                    <ul class="social-icons">-->
+            <!--                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+            <!--                      <li><a href="#"><i class="fa fa-behance"></i></a></li>-->
+            <!--                    </ul>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--              <div class="down-content">-->
+            <!--                <h4>Kate Town</h4>-->
+            <!--                <span>General Manager</span>-->
+            <!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing itaque corporis nulla.</p>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--          </div>-->
+        </div>
+    </div>
+</div>
+
+
+<!--    <div class="services">-->
+<!--      <div class="container">-->
+<!--        <div class="row">-->
+<!--          <div class="col-md-4">-->
+<!--            <div class="service-item">-->
+<!--              <div class="icon">-->
+<!--                <i class="fa fa-gear"></i>-->
+<!--              </div>-->
+<!--              <div class="down-content">-->
+<!--                <h4>Product Management</h4>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>-->
+<!--                <a href="#" class="filled-button">Read More</a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4">-->
+<!--            <div class="service-item">-->
+<!--              <div class="icon">-->
+<!--                <i class="fa fa-gear"></i>-->
+<!--              </div>-->
+<!--              <div class="down-content">-->
+<!--                <h4>Customer Relations</h4>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>-->
+<!--                <a href="#" class="filled-button">Details</a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4">-->
+<!--            <div class="service-item">-->
+<!--              <div class="icon">-->
+<!--                <i class="fa fa-gear"></i>-->
+<!--              </div>-->
+<!--              <div class="down-content">-->
+<!--                <h4>Global Collection</h4>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat.</p>-->
+<!--                <a href="#" class="filled-button">Read More</a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="happy-clients">-->
+<!--      <div class="container">-->
+<!--        <div class="row">-->
+<!--          <div class="col-md-12">-->
+<!--            <div class="section-heading">-->
+<!--              <h2>Happy Partners</h2>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-12">-->
+<!--            <div class="owl-clients owl-carousel">-->
+<!--              <div class="client-item">-->
+<!--                <img src="/assets/images/client-01.png" alt="1">-->
+<!--              </div>-->
+<!--              -->
+<!--              <div class="client-item">-->
+<!--                <img src="/assets/images/client-01.png" alt="2">-->
+<!--              </div>-->
+<!--              -->
+<!--              <div class="client-item">-->
+<!--                <img src="/assets/images/client-01.png" alt="3">-->
+<!--              </div>-->
+<!--              -->
+<!--              <div class="client-item">-->
+<!--                <img src="/assets/images/client-01.png" alt="4">-->
+<!--              </div>-->
+<!--              -->
+<!--              <div class="client-item">-->
+<!--                <img src="/assets/images/client-01.png" alt="5">-->
+<!--              </div>-->
+<!--              -->
+<!--              <div class="client-item">-->
+<!--                <img src="/assets/images/client-01.png" alt="6">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<form sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')" style="text-align: center">
+    <table align="center">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td>Lastname</td>
+            <td><input type="text" id="lastname"></td>
+        </tr>
+        <tr>
+            <td>Patronymic</td>
+            <td><input type="text" id="patronymic"></td>
+        </tr>
+        <tr>
+            <td>Portrait</td>
+            <td><input type="text" id="portrait"></td>
+        </tr>
+        <tr>
+            <td>About</td>
+            <td><input type="text" id="about"></td>
+        </tr>
+    </table>
+    <button id="send" type="submit">Submit</button>
+</form>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+<div th:insert="blocks/scripts :: scripts"></div>
+</body>
+
+</html>

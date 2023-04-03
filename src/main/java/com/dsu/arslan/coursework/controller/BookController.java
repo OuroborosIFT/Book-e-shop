@@ -3,11 +3,12 @@ package com.dsu.arslan.coursework.controller;
 import com.dsu.arslan.coursework.dto.BookDTO;
 import com.dsu.arslan.coursework.service.BookService;
 import com.dsu.arslan.coursework.service.SessionObjectHolder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -33,7 +34,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}/bucket")
-    public String addBucket(@PathVariable Long id, Principal principal) {
+    public String addToBucket(@PathVariable Long id, Principal principal) {
         sessionObjectHolder.addClick();
 
         if (principal == null) {
@@ -42,6 +43,23 @@ public class BookController {
 
         bookService.addToUserBucket(id, principal.getName());
         return "redirect:/books";
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> addBook(BookDTO dto) {
+        bookService.addBook(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @MessageMapping("/books")
+    public void messageAddProduct(BookDTO dto) {
+        bookService.addBook(dto);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public BookDTO getById(@PathVariable Long id) {
+        return bookService.getById(id);
     }
 
 }

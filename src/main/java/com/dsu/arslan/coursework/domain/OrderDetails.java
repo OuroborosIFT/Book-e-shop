@@ -12,12 +12,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 public class OrderDetails {
-    private final String SEQ_NAME = "order_details_seq";
+    /*private final String SEQ_NAME = "order_details_seq";
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
-    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
+    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)*/
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "order_id")
@@ -26,8 +29,14 @@ public class OrderDetails {
     @JoinColumn(name = "book_id")
     private Book book;
     @Column
-    private Integer amount;
+    private Long amount;
     @Column
     private Double price;
 
+    public OrderDetails(Order order, Book book, Long amount) {
+        this.order = order;
+        this.book = book;
+        this.amount = amount;
+        this.price = book.getPrice();
+    }
 }

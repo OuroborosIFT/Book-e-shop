@@ -2,6 +2,7 @@ package com.dsu.arslan.coursework.domain;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,19 +16,22 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Order {
-    private final String SEQ_NAME = "order_seq";
+    /*private final String SEQ_NAME = "order_seq";
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
-    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
+    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)*/
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     @CreationTimestamp
     private LocalDateTime created;
     @Column
-    @CreationTimestamp
-    private LocalDateTime updated;
+    @UpdateTimestamp
+    private LocalDateTime changed;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -35,7 +39,7 @@ public class Order {
     private Double sum;
     @Column
     private String address;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderDetails> detailsList;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;

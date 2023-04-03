@@ -35,37 +35,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Basic
-    private AuthenticationProvider authenticationProvider() {
+    private DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
         auth.setUserDetailsService(userService);
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/users").hasAnyAuthority(Role.ADMIN.name(), Role.MANAGER.name())
+                .antMatchers("/ws").permitAll()
+                .antMatchers("/users").hasAuthority(Role.ADMIN.name())
 //                .antMatchers("/users/new").hasAuthority(Role.ADMIN.name())
                 .anyRequest().permitAll()
                 .and()
-                    .formLogin()
-                    .loginPage("/login")
-                    .failureUrl("/login-error")
-                    .loginProcessingUrl("/auth")
-                    .permitAll()
+                .formLogin()
+                .loginPage("/login")
+                .failureUrl("/login-error")
+                .loginProcessingUrl("/auth")
+                .permitAll()
                 .and()
-                    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/").deleteCookies("JSESSIONID")
-                    .invalidateHttpSession(true)
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/").deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true)
                 .and()
-                    .csrf().disable();
+                .csrf().disable();
     }
 
 }

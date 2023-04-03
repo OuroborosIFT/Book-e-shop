@@ -8,10 +8,13 @@ import java.util.List;
 
 public interface BucketService {
 
-    Bucket createBucket(User user, List<Long> productsIds);
+    Bucket createBucket(User user, List<Long> booksIds);
 
-    void addProducts(Bucket bucket, List<Long> productsIds);
+    void addProducts(Bucket bucket, List<Long> booksIds);
+    void removeProducts(Bucket bucket, List<Long> booksIds);
 
     BucketDTO getBucketByUser(String username);
+
+    void commitBucketToOrder(String username);
 
 }

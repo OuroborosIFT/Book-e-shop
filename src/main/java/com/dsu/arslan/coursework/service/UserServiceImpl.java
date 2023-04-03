@@ -20,7 +20,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -32,7 +32,8 @@ public class UserServiceImpl implements UserService{
      }
 
     @Override
-    public boolean save(UserDTO userDTO) {
+    @Transactional
+    public boolean save(UserDTO userDTO)  {
         if (!Objects.equals(userDTO.getPassword(), userDTO.getMatchingPassword())) {
             throw new RuntimeException("Passwords not equals!");
         }

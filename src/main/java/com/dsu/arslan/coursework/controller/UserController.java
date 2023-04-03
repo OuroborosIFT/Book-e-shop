@@ -32,23 +32,16 @@ public class UserController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/new")
-    public String newUser(Model model) {
+    public String newUser(Model model) {   // аналог signup()
         System.out.println("Called method \'newUser\'");
         model.addAttribute("user", new UserDTO());
         return "user";
     }
 
-    @PostAuthorize("isAuthenticated() and #username == authentication.principal.username")
-    @GetMapping("/{name}/roles")
-    @ResponseBody
-    public String getRoles(@PathVariable("name") String username) {
-        System.out.println("Called method \'getRoles\'");
-        User byUsername = userService.findByUsername(username);
-        return byUsername.getRole().name();
-    }
-
     @PostMapping("/new")
     public String saveUser(UserDTO userDTO, Model model) {
+        System.out.println("Called method \'saveUser\'");
+
         if (userService.save(userDTO)) {
             return "redirect:/users";
         } else {
@@ -57,6 +50,17 @@ public class UserController {
         }
     }
 
+    @PostAuthorize("isAuthenticated() and #username == authentication.principal.username")
+    @GetMapping("/{name}/roles")
+    @ResponseBody
+    public String getRoles(@PathVariable("name") String username) {
+        System.out.println("Called method \'getRoles\'");
+        User byUsername = userService.findByUsername(username);
+        System.out.println(byUsername.getRole().name());
+        return byUsername.getRole().name();
+    }
+
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/profile")
     public String profileUser(Model model, Principal principal) {
         if (principal == null) {
@@ -75,6 +79,7 @@ public class UserController {
         return "profile";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/profile")
     public String updateProfileUser(UserDTO userDTO, Model model, Principal principal) {
         if (principal == null || !Objects.equals(principal.getName(), userDTO.getEmail())) {
