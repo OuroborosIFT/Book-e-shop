@@ -9,13 +9,13 @@
   <!--app.js dependance: jquery-->
   <script src="/webjars/jquery/jquery.min.js"></script>
   <script src="/books.js"></script>
-  <style>
-        .alter{
-            padding: 20px;
-            margin: 20px;
-            background: #b2afaf;
-        }
-    </style>
+<!--  <style>-->
+<!--        .alter{-->
+<!--            padding: 20px;-->
+<!--            margin: 20px;-->
+<!--            background: #b2afaf;-->
+<!--        }-->
+<!--    </style>-->
 </head>
 
 <body>
@@ -26,6 +26,7 @@
     <h4 th:text="${book.title}">Book name</h4>
     <img th:src="${book.image}" alt="book image" height="100px"/>
     <p th:text="${book.description}">Description</p>
+<!--    <select>genres</select>-->
     <b><p th:text="'$' + ${book.price}">$0.0</p></b>
     <a th:href="@{/books/{id}/bucket(id=${book.id})}">Add to bucket</a>
   </div>

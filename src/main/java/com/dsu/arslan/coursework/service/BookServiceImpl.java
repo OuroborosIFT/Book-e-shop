@@ -3,8 +3,10 @@ package com.dsu.arslan.coursework.service;
 import com.dsu.arslan.coursework.dao.BookRepository;
 import com.dsu.arslan.coursework.domain.Book;
 import com.dsu.arslan.coursework.domain.Bucket;
+import com.dsu.arslan.coursework.domain.Genre;
 import com.dsu.arslan.coursework.domain.User;
 import com.dsu.arslan.coursework.dto.BookDTO;
+import com.dsu.arslan.coursework.dto.GenreDTO;
 import com.dsu.arslan.coursework.mapper.BookMapper;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDTO> getAllBooks() {
         return bookMapper.fromBookList(bookRepository.findAll());
+    }
+
+    @Override
+    public List<BookDTO> getBooksByGenre(Long id) {
+        return bookMapper.fromBookList(bookRepository.findAllByGenre(id));
     }
 
     @Override
@@ -77,7 +84,6 @@ public class BookServiceImpl implements BookService {
             bucketService.removeProducts(bucket, Collections.singletonList(bookId));
         }
     }
-
 
     @Override
     @Transactional

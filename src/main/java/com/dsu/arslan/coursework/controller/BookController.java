@@ -62,4 +62,11 @@ public class BookController {
         return bookService.getById(id);
     }
 
+    @GetMapping("/genre/{id}")
+    public String booksByGenre(@PathVariable Long id, Model model) {
+        List<BookDTO> bookDTOS = bookService.getBooksByGenre(id);
+        model.addAttribute("books", bookDTOS);
+        return "books";
+    }
+
 }

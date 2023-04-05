@@ -19,6 +19,11 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
+    public GenreDTO getGenreById(Long id) {
+        return genreMapper.fromGenre(genreRepository.getReferenceById(id));
+    }
+
+    @Override
     public List<GenreDTO> getAllGenres() {
         return genreMapper.fromGenreList(genreRepository.findAll());
     }
