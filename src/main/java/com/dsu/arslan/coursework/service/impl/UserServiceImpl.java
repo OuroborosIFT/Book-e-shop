@@ -1,9 +1,10 @@
-package com.dsu.arslan.coursework.service;
+package com.dsu.arslan.coursework.service.impl;
 
 import com.dsu.arslan.coursework.dao.UserRepository;
 import com.dsu.arslan.coursework.domain.Role;
 import com.dsu.arslan.coursework.domain.User;
 import com.dsu.arslan.coursework.dto.UserDTO;
+import com.dsu.arslan.coursework.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;

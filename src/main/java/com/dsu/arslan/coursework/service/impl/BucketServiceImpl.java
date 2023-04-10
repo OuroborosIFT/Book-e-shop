@@ -1,10 +1,13 @@
-package com.dsu.arslan.coursework.service;
+package com.dsu.arslan.coursework.service.impl;
 
 import com.dsu.arslan.coursework.dao.BookRepository;
 import com.dsu.arslan.coursework.dao.BucketRepository;
 import com.dsu.arslan.coursework.domain.*;
 import com.dsu.arslan.coursework.dto.BucketDTO;
 import com.dsu.arslan.coursework.dto.BucketDetailsDTO;
+import com.dsu.arslan.coursework.service.BucketService;
+import com.dsu.arslan.coursework.service.OrderService;
+import com.dsu.arslan.coursework.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

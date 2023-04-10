@@ -1,9 +1,10 @@
-package com.dsu.arslan.coursework.service;
+package com.dsu.arslan.coursework.service.impl;
 
 import com.dsu.arslan.coursework.dao.AuthorRepository;
 import com.dsu.arslan.coursework.domain.Author;
 import com.dsu.arslan.coursework.dto.AuthorDTO;
 import com.dsu.arslan.coursework.mapper.AuthorMapper;
+import com.dsu.arslan.coursework.service.AuthorService;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,11 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public List<AuthorDTO> getAllAuthors() {
         return authorMapper.fromAuthorList(authorRepository.findAll());
+    }
+
+    @Override
+    public List<AuthorDTO> getByKeyword(String keyword) {
+        return authorMapper.fromAuthorList(authorRepository.findByKeyword(keyword));
     }
 
     @Override

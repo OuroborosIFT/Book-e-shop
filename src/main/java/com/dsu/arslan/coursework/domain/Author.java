@@ -27,8 +27,8 @@ public class Author {
     private Long id;
     @Column
     private String name;
-    @Column
-    private String lastName;
+    @Column(name = "lastname")
+    private String lastname;
     @Column
     private String patronymic;
     @Column

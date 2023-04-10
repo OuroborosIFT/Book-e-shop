@@ -2,9 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <div th:insert="blocks/headinfo :: headinfo"></div>
-    <title>Profile</title>
+    <title>Личный профиль</title>
 </head>
 <body>
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
 <header th:insert="blocks/header :: header"></header>
 
 <h1>User profile</h1>
@@ -31,5 +41,6 @@
 </form>
 
 <footer th:insert="blocks/footer :: footer"></footer>
+<div th:insert="blocks/scripts :: scripts"></div>
 </body>
 </html>

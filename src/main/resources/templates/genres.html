@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-  <div th:insert="blocks/headinfo :: headinfo"></div>
-  <title>Жанры</title>
+    <div th:insert="blocks/headinfo :: headinfo"></div>
+    <title>Жанры</title>
 </head>
 <body>
 <!-- ***** Preloader Start ***** -->
@@ -19,26 +19,51 @@
 
 <!-- Page Content -->
 <div class="page-heading products-heading header-text">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="text-content">
-          <h4>new arrivals</h4>
-          <h2>sixteen products</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-content">
+                    <h4></h4>
+                    <h2>Жанры</h2>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
-<div class="container"  id="table">
-  <div th:each="genre : ${genres}" class="alter">
-    <a th:href="@{/products/genre/{id}(id=${genre.id})}" class="nav-link px-2 link-dark">
-      <h4 th:text="${genre.title}">Genre name</h4>
-    </a>
-  </div>
+<!--<div class="container"  id="table">-->
+<!--  <div th:each="genre : ${genres}" class="alter">-->
+<!--    <a th:href="@{/products/genre/{id}(id=${genre.id})}" class="nav-link px-2 link-dark">-->
+<!--      <h4 th:text="${genre.title}">Genre name</h4>-->
+<!--    </a>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="team-members">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Все жанры</h2>
+                </div>
+            </div>
+            <div th:each="genre : ${genres}" class="col-md-4">
+                <div class="team-member">
+                    <div class="thumb-container">
+                        <!--            <img th:src="${author.portrait}" alt="author">-->
+                    </div>
+                    <div class="down-content">
+                        <a th:href="@{/products/genre/{id}(id=${genre.id})}" class="nav-link px-2 link-dark">
+                            <h4 th:text="${genre.title}">Genre name</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <footer th:insert="blocks/footer :: footer"></footer>
+<div th:insert="blocks/scripts :: scripts"></div>
 </body>
 </html>

@@ -1,264 +1,75 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-
 <head>
-  <div th:insert="blocks/headinfo :: headinfo"></div>
-  <title>Sixteen Clothing Products</title>
+    <div th:insert="blocks/headinfo :: headinfo"></div>
+    <title>Книжный магазин</title>
 </head>
+<body>
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
 
-  <body>
+<!-- Header -->
+<header th:insert="blocks/header :: header"></header>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-
-    <!-- Header -->
-    <header th:insert="blocks/header :: header"></header>
-<!--    <header class="">-->
-<!--      <nav class="navbar navbar-expand-lg">-->
-<!--        <div class="container">-->
-<!--          <a class="navbar-brand" href="index.html"><h2>Книжный <em>Магазин</em></h2></a>-->
-<!--          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--            <span class="navbar-toggler-icon"></span>-->
-<!--          </button>-->
-<!--          <div class="collapse navbar-collapse" id="navbarResponsive">-->
-<!--            <ul class="navbar-nav ml-auto">-->
-<!--              <li class="nav-item active">-->
-<!--                <a class="nav-link" href="index.html">Главная-->
-<!--                  &lt;!&ndash;<span class="sr-only">(current)</span>&ndash;&gt;-->
-<!--                </a>-->
-<!--              </li> -->
-<!--              <li class="nav-item">-->
-<!--                <a class="nav-link" href="products.html">Авторы</a>-->
-<!--              </li>-->
-<!--              <li class="nav-item">-->
-<!--                <a class="nav-link" href="about.html">Книги</a>-->
-<!--              </li>-->
-<!--              <li class="nav-item">-->
-<!--                <a class="nav-link" href="contact.html">Жанры</a>-->
-<!--              </li>-->
-<!--            </ul>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </nav>-->
-<!--    </header>-->
-
-    <!-- Page Content -->
-    <!-- Banner Starts Here -->
-    <div class="banner header-text">
-      <div class="owl-banner owl-carousel">
+<!-- Page Content -->
+<!-- Banner Starts Here -->
+<div class="banner header-text">
+    <div class="owl-banner owl-carousel">
         <div class="banner-item-01">
-          <div class="text-content">
-            <h4></h4>
-            <h2>Художественная литература</h2>
-          </div>
+            <div class="text-content">
+                <h4></h4>
+                <h2>Художественная литература</h2>
+            </div>
         </div>
         <div class="banner-item-02">
-          <div class="text-content">
-            <h4></h4>
-            <h2>Научные издания</h2>
-          </div>
+            <div class="text-content">
+                <h4></h4>
+                <h2>Научные издания</h2>
+            </div>
         </div>
-        <div class="banner-item-03">
-          <div class="text-content">
-            <h4></h4>
-            <h2></h2>
-          </div>
-        </div>
-      </div>
     </div>
-    <!-- Banner Ends Here -->
+</div>
+<!-- Banner Ends Here -->
 
-    <div class="latest-products">
-      <div class="container">
+<div class="latest-products">
+    <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Новые книги</h2>
-              <a href="products.html">посмотреть все<i class="fa fa-angle-right"></i></a>
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Новые книги</h2>
+                    <a href="products.html">посмотреть все<i class="fa fa-angle-right"></i></a>
+                </div>
             </div>
-          </div>
-
-          <div th:each="book : ${books}" class="col-md-4">
-            <div class="product-item">
-              <a href="#"><img th:src="${book.image}" alt="book image" ></a>
-              <div class="down-content">
-                <a href="#"><h4 th:text="${book.title}">Евгений Онегин</h4></a>
-                <h6 th:text="'₽' + ${book.price}">320.00₽</h6>
-                <p th:text="${book.description}">Роман в стихах русского писателя и поэта Александра Сергеевича Пушкина одно из самых значительных произведений русской словесности. Повествование ведётся от имени безымянного автора, который, впрочем, в первых же строфах называет Онегина «добрый мой приятель». По известному определению В. Г. Белинского, Пушкин назвал «Евгения Онегина» романом в стихах, поскольку в нём изображена «жизнь во всей её прозаической действительности».</p>
-                <ul class="stars">
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                </ul>
-                <a th:href="@{/books/{id}/bucket(id=${book.id})}">Add to bucket</a>
-              </div>
+            <div th:each="book : ${books}" class="col-md-4">
+                <div class="product-item">
+                    <a href="#"><img th:src="${book.image}" width="250px" height="400px" alt="book image"></a>
+                    <div class="down-content">
+                        <a href="#"><h4 th:text="${book.title}">Title</h4></a>
+                        <h6 th:text="'₽' + ${book.price}">0.00₽</h6>
+                        <p th:text="${#strings.abbreviate(book.description,100)}">Description</p>
+                        <ul class="stars">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                        <a th:href="@{/books/{id}/bucket(id=${book.id})}">Add to bucket</a>
+                    </div>
+                </div>
             </div>
-          </div>
-
-<!--          <div class="col-md-4">-->
-<!--            <div class="product-item">-->
-<!--              <a href="#"><img src="/assets/images/Горе_от_ума.webp" alt=""  ></a>-->
-<!--              <div class="down-content">-->
-<!--                <a href="#"><h4>Горе от ума</h4></a>-->
-<!--                <h6>350.00₽</h6>-->
-<!--                <p>Комедия в стихах Александра Сергеевича Грибоедова. Она сочетает в себе элементы классицизма и новых для начала XIX века романтизма и реализма. Она описывает светское общество времён крепостного права и показывает жизнь 1813-1824 годов.</p>-->
-<!--                <ul class="stars">-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                </ul>-->
-<!--                <span>Reviews (21)</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="col-md-4">-->
-<!--            <div class="product-item">-->
-<!--              <a href="#"><img src="/assets/images/Герой_нашего_времени.jpg" alt=""  ></a>-->
-<!--              <div class="down-content">-->
-<!--                <a href="#"><h4>Герой нашего времени</h4></a>-->
-<!--                <h6>430.00₽</h6>-->
-<!--                <p>Первый в русской прозе социально-психологический роман, написанный Михаилом Юрьевичем Лермонтовым в 1838-1840 годах. Классика русской литературы.</p>-->
-<!--                <ul class="stars">-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                </ul>-->
-<!--                <span>Reviews (36)</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="col-md-4">-->
-<!--            <div class="product-item">-->
-<!--              <a href="#"><img src="/assets/images/Капитанская_дочка.jpg" alt=""  ></a>-->
-<!--              <div class="down-content">-->
-<!--                <a href="#"><h4>Капитанская дочка</h4></a>-->
-<!--                <h6>280.00₽</h6>-->
-<!--                <p>Исторический роман Александра Пушкина, действие которого происходит во время восстания Емельяна Пугачёва. Впервые опубликован без указания имени автора в 4-й книжке журнала «Современник», поступившей в продажу в последней декаде 1836 года.</p>-->
-<!--                <ul class="stars">-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                </ul>-->
-<!--                <span>Reviews (48)</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="col-md-4">-->
-<!--            <div class="product-item">-->
-<!--              <a href="#"><img src="/assets/images/Анна_Каренина.jpg" alt=""  ></a>-->
-<!--              <div class="down-content">-->
-<!--                <a href="#"><h4>Анна Каренина</h4></a>-->
-<!--                <h6>250.00₽</h6>-->
-<!--                <p>Роман Льва Толстого о трагической любви замужней дамы Анны Карениной и блестящего офицера Алексея Вронского на фоне счастливой семейной жизни дворян Константина Лёвина и Кити Щербацкой. Масштабная картина нравов и быта дворянской среды Петербурга и Москвы второй половины XIX века, сочетающая философские размышления авторского alter ego Лёвина с передовыми в русской литературе психологическими зарисовками, а также сценами из жизни крестьян. </p>-->
-<!--                <ul class="stars">-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                </ul>-->
-<!--                <span>Reviews (16)</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="col-md-4">-->
-<!--            <div class="product-item">-->
-<!--              <a href="#"><img src="/assets/images/Отцы_и_дети.jpg" alt=""  ></a>-->
-<!--              <div class="down-content">-->
-<!--                <a href="#"><h4>Отцы и дети</h4></a>-->
-<!--                <h6>300.00₽</h6>-->
-<!--                <p>Роман И. С. Тургенева, написанный в 1860-1861 годах и опубликованный в 1862 году в журнале «Русский вестник». В обстановке «великих реформ» книга стала сенсацией и привлекла к себе всеобщее внимание, а образ главного героя Евгения Базарова был воспринят как воплощение нового, пореформенного поколения, став примером для подражания молодёжи 1860-х гг. Свойственные Базарову бескомпромиссность, отсутствие преклонения перед авторитетами и старыми истинами, приоритет полезного над прекрасным стали идеалами первого поколения пореформенной интеллигенции.</p>-->
-<!--                <ul class="stars">-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                  <li><i class="fa fa-star"></i></li>-->
-<!--                </ul>-->
-<!--                <span>Reviews (32)</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-
         </div>
-      </div>
     </div>
+</div>
 
-<!--    <div class="best-features">-->
-<!--      <div class="container">-->
-<!--        <div class="row">-->
-<!--          <div class="col-md-12">-->
-<!--            <div class="section-heading">-->
-<!--              <h2>About Sixteen Clothing</h2>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="col-md-6">-->
-<!--            <div class="left-content">-->
-<!--              <h4>Looking for the best products?</h4>-->
-<!--              <p><a rel="nofollow" href="https://templatemo.com/tm-546-sixteen-clothing" target="_parent">This template</a> is free to use for your business websites. However, you have no permission to redistribute the downloadable ZIP file on any template collection website. <a rel="nofollow" href="https://templatemo.com/contact">Contact us</a> for more info.</p>-->
-<!--              <ul class="featured-list">-->
-<!--                <li><a href="#">Lorem ipsum dolor sit amet</a></li>-->
-<!--                <li><a href="#">Consectetur an adipisicing elit</a></li>-->
-<!--                <li><a href="#">It aquecorporis nulla aspernatur</a></li>-->
-<!--                <li><a href="#">Corporis, omnis doloremque</a></li>-->
-<!--                <li><a href="#">Non cum id reprehenderit</a></li>-->
-<!--              </ul>-->
-<!--              <a href="about.html" class="filled-button">Read More</a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="col-md-6">-->
-<!--            <div class="right-image">-->
-<!--              <img src="/assets/images/feature-image.jpg" alt="">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-<!--    <div class="call-to-action">-->
-<!--      <div class="container">-->
-<!--        <div class="row">-->
-<!--          <div class="col-md-12">-->
-<!--            <div class="inner-content">-->
-<!--              <div class="row">-->
-<!--                <div class="col-md-8">-->
-<!--                  <h4>Creative &amp; Unique <em>Sixteen</em> Products</h4>-->
-<!--                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>-->
-<!--                </div>-->
-<!--                <div class="col-md-4">-->
-<!--                  <a href="#" class="filled-button">Purchase Now</a>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-    <footer th:insert="blocks/footer :: footer"></footer>
-    <div th:insert="blocks/scripts :: scripts"></div>
-
-  </body>
-
+<footer th:insert="blocks/footer :: footer"></footer>
+<div th:insert="blocks/scripts :: scripts"></div>
+</body>
 </html>

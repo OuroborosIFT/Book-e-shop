@@ -1,8 +1,9 @@
-package com.dsu.arslan.coursework.service;
+package com.dsu.arslan.coursework.service.impl;
 
 import com.dsu.arslan.coursework.dao.GenreRepository;
 import com.dsu.arslan.coursework.dto.GenreDTO;
 import com.dsu.arslan.coursework.mapper.GenreMapper;
+import com.dsu.arslan.coursework.service.GenreService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -9,7 +9,7 @@ public class AuthorDTO {
 
     private Long id;
     private String name;
-    private String lastName;
+    private String lastname;
     private String patronymic;
     private String portrait;
     private String about;

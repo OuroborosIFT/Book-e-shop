@@ -2,9 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <div th:insert="blocks/headinfo :: headinfo"></div>
-    <title>User list</title>
+    <title>Все пользователи</title>
 </head>
 <body>
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
 <header th:insert="blocks/header :: header"></header>
 
 <table border="1">
@@ -20,5 +30,6 @@
 <a th:href="@{/users/new}">Add user</a>
 
 <footer th:insert="blocks/footer :: footer"></footer>
+<div th:insert="blocks/scripts :: scripts"></div>
 </body>
 </html>

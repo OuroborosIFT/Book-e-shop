@@ -1,19 +1,9 @@
-<!--            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">-->
-<!--                <li><a th:href="@{/}" class="nav-link px-2 link-dark">Home</a></li>-->
-<!--                <li><a th:href="@{/authors}" class="nav-link px-2 link-dark">Authors</a></li>-->
-<!--                <li><a th:href="@{/books}" class="nav-link px-2 link-dark">Books</a></li>-->
-<!--                <li><a th:href="@{/genres}" class="nav-link px-2 link-dark">Genres</a></li>-->
-<!--                <li sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')"><a th:href="@{/users}" class="nav-link px-2 link-dark">Users</a></li>-->
-<!--                <li sec:authorize="isAuthenticated()"><a th:href="@{/bucket}" class="nav-link px-2 link-dark">Bucket</a></li>-->
-<!--            </ul>-->
-
-
-<!-- Header -->
 <header th:fragment="header" class="">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="index.html"><h2>Книжный <em>Магазин</em></h2></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -32,13 +22,32 @@
                         <a th:href="@{/genres.html}" class="nav-link">Жанры</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/contact.html}" class="nav-link">О нас</a>
+                        <form class="search-form" th:action="@{/search}" method="get">
+                            <input type="search"  name="keyword" th:value="${keyword}" placeholder="Поиск" class="search-input">
+                            <button type="submit" class="search-button">
+                                <svg class="submit-button">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+                                </svg>
+                            </button>
+                        </form>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
+                            <symbol id="search" viewBox="0 0 32 32">
+                                <path d="M 19.5 3 C 14.26514 3 10 7.2651394 10 12.5 C 10 14.749977 10.810825 16.807458 12.125 18.4375 L 3.28125 27.28125 L 4.71875 28.71875 L 13.5625 19.875 C 15.192542 21.189175 17.250023 22 19.5 22 C 24.73486 22 29 17.73486 29 12.5 C 29 7.2651394 24.73486 3 19.5 3 z M 19.5 5 C 23.65398 5 27 8.3460198 27 12.5 C 27 16.65398 23.65398 20 19.5 20 C 15.34602 20 12 16.65398 12 12.5 C 12 8.3460198 15.34602 5 19.5 5 z" />
+                            </symbol>
+                        </svg>
+                    </li>
+                    <!--                    <li class="nav-item">-->
+                    <!--                        <a th:href="@{/contact.html}" class="nav-link">О нас</a>-->
+                    <!--                    </li>-->
+                    <li sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')" class="nav-item">
+                        <a th:href="@{/users}" class="nav-link">Пользователи</a>
                     </li>
                     <li sec:authorize="isAuthenticated()" class="nav-item">
                         <a th:href="@{/bucket}" class="nav-link px-2 link-dark">Корзина</a>
                     </li>
                     <li sec:authorize="isAuthenticated()" class="nav-item">
-<!--                        <a th:href="@{/users/profile}"><span sec:authentication="principal.username"></span></a>-->
+                        <!--                        <a th:href="@{/users/profile}"><span sec:authentication="principal.username"></span></a>-->
                         <a th:href="@{/logout}" class="nav-link px-2 link-dark">Выход</a>
                     </li>
                     <li sec:authorize="!isAuthenticated()" class="nav-item">

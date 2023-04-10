@@ -1,4 +1,4 @@
-package com.dsu.arslan.coursework.service;
+package com.dsu.arslan.coursework.service.impl;
 
 import com.dsu.arslan.coursework.dao.BookRepository;
 import com.dsu.arslan.coursework.domain.Book;
@@ -8,6 +8,9 @@ import com.dsu.arslan.coursework.domain.User;
 import com.dsu.arslan.coursework.dto.BookDTO;
 import com.dsu.arslan.coursework.dto.GenreDTO;
 import com.dsu.arslan.coursework.mapper.BookMapper;
+import com.dsu.arslan.coursework.service.BookService;
+import com.dsu.arslan.coursework.service.BucketService;
+import com.dsu.arslan.coursework.service.UserService;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +46,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDTO> getBooksByGenre(Long id) {
         return bookMapper.fromBookList(bookRepository.findAllByGenre(id));
+    }
+
+    @Override
+    public List<BookDTO> getByKeyword(String keyword) {
+        return bookMapper.fromBookList(bookRepository.findByKeyword(keyword));
     }
 
     @Override

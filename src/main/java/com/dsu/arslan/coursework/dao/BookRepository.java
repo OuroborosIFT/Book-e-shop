@@ -1,5 +1,6 @@
 package com.dsu.arslan.coursework.dao;
 
+import com.dsu.arslan.coursework.domain.Author;
 import com.dsu.arslan.coursework.domain.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,5 +14,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query(value = "SELECT * FROM books WHERE genre_id = :id", nativeQuery = true)
     List<Book> findAllByGenre(@Param("id") Long id);
+
+    @Query(value = "SELECT * FROM books WHERE title LIKE %:keyword%", nativeQuery = true)
+    List<Book> findByKeyword(@Param("keyword") String keyword);
 
 }

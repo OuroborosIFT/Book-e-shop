@@ -9,6 +9,7 @@ import java.util.List;
 public interface BookService {
     List<BookDTO> getAllBooks();
     List<BookDTO> getBooksByGenre(Long id);
+    List<BookDTO> getByKeyword(String keyword);
     void addToUserBucket(Long bookId, String username);
     void removeFromUserBucket(Long bookId, String username);
     void addBook(BookDTO bookDTO);
