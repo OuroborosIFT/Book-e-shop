@@ -12,12 +12,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 public class OrderDetails {
-    /*private final String SEQ_NAME = "order_details_seq";
-
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
-    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)*/
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

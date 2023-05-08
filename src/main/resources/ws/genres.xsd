@@ -1,0 +1,25 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://arslan.dsu.com/coursework/ws/genres"
+           targetNamespace="http://arslan.dsu.com/coursework/ws/genres"
+           elementFormDefault="qualified">
+    <xs:element name="getGenresRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getGenresResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="genres" type="tns:genresWS" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="genresWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="title" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

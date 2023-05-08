@@ -3,6 +3,12 @@
 <head>
     <div th:insert="blocks/headinfo :: headinfo"></div>
     <title>Книги</title>
+    <!--STOMP-->
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <!--app.js dependance: jquery-->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/books.js"></script>
 </head>
 <body>
 <!-- ***** Preloader Start ***** -->
@@ -24,7 +30,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-content">
-                    <h4>Все</h4>
+                    <h4></h4>
                     <h2>Книги</h2>
                 </div>
             </div>
@@ -74,6 +80,28 @@
         </div>
     </div>
 </div>
+
+<form sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')" style="text-align: center">
+    <table align="center">
+        <tr>
+            <td>Title</td>
+            <td><input type="text" id="title"></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><input type="text" id="image"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input type="text" id="description"></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="number" id="price"></td>
+        </tr>
+    </table>
+    <button id="send" type="submit">Submit</button>
+</form>
 
 <footer th:insert="blocks/footer :: footer"></footer>
 <div th:insert="blocks/scripts :: scripts"></div>

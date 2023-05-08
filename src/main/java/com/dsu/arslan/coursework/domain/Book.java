@@ -14,12 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Book {
-    /*private final String SEQ_NAME = "book_seq";
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
-    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)*/
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,12 +32,12 @@ public class Book {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
     private List<Author> authors;
-    /*@ManyToMany(mappedBy = "bookList")
-    private List<Author> authorList;*/
+    @ManyToMany(mappedBy = "bookList")
+    private List<Author> authorList;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
-    /*@ManyToMany (cascade = {
+    @ManyToMany (cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
@@ -50,6 +45,6 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
-    private List<Genre> genreList;*/
+    private List<Genre> genreList;
 
 }

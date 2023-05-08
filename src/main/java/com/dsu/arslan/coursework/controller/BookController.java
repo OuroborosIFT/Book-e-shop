@@ -3,6 +3,7 @@ package com.dsu.arslan.coursework.controller;
 import com.dsu.arslan.coursework.dto.BookDTO;
 import com.dsu.arslan.coursework.service.BookService;
 import com.dsu.arslan.coursework.service.SessionObjectHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -14,12 +15,13 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-@RequestMapping("/books")
+@RequestMapping(path = {"/books", "/books.html"})
 public class BookController {
 
     private final BookService bookService;
     private final SessionObjectHolder sessionObjectHolder;
 
+    @Autowired
     public BookController(BookService bookService, SessionObjectHolder sessionObjectHolder) {
         this.bookService = bookService;
         this.sessionObjectHolder = sessionObjectHolder;

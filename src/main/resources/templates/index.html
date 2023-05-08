@@ -49,19 +49,12 @@
             </div>
             <div th:each="book : ${books}" class="col-md-4">
                 <div class="product-item">
-                    <a href="#"><img th:src="${book.image}" width="250px" height="400px" alt="book image"></a>
+                    <a href="#"><img th:src="${book.image}" width="280px" height="400px" alt="book image"></a>
                     <div class="down-content">
                         <a href="#"><h4 th:text="${book.title}">Title</h4></a>
                         <h6 th:text="'₽' + ${book.price}">0.00₽</h6>
-                        <p th:text="${#strings.abbreviate(book.description,100)}">Description</p>
-                        <ul class="stars">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <a th:href="@{/books/{id}/bucket(id=${book.id})}">Add to bucket</a>
+                        <p th:text="${#strings.abbreviate(book.description,100)}">О книге</p>
+                        <a th:href="@{/books/{id}/bucket(id=${book.id})}">Добавить в корзину</a>
                     </div>
                 </div>
             </div>

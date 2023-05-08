@@ -13,12 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Bucket {
-    /*    private final String SEQ_NAME = "bucket_seq";
 
-        @Id
-        @Column
-        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
-        @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)*/
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:insert="blocks/headinfo :: headinfo"></div>
+    <title>Поиск</title>
+</head>
+<body>
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<!-- Header -->
+<header th:insert="blocks/header :: header"></header>
+
+<!-- Page Content -->
+<!-- Banner Starts Here -->
+<div class="banner header-text">
+    <div class="owl-banner owl-carousel">
+        <div class="banner-item-search">
+            <div class="text-content">
+                <h4></h4>
+                <h2></h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Ends Here -->
+
+<div class="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Книги</h2>
+                </div>
+                <div class="filters-content">
+                    <div class="row grid">
+                        <div th:each="book : ${books}" class="col-lg-4 col-md-4 all">
+                            <div class="product-item">
+                                <a href="#"><img th:src="${book.image}" width="250px" height="400px" alt=""></a>
+                                <div class="down-content">
+                                    <a href="#"><h4 th:text="${book.title}">Tittle goes here</h4></a>
+                                    <h6 th:text="'₽' + ${book.price}">$0.00</h6>
+                                    <p th:text="${#strings.abbreviate(book.description,150)}">Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="team-members">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Авторы</h2>
+                </div>
+            </div>
+            <div th:each="author : ${authors}" class="col-md-4">
+                <div class="team-member">
+                    <div class="thumb-container">
+                        <img th:src="${author.portrait}" alt="author">
+                    </div>
+                    <div class="down-content">
+                        <h4 th:text="${author.name}">Author name</h4>
+                        <h4 th:text="${author.lastname}">Author lastName</h4>
+                        <h4 th:text="${author.patronymic}">Author patronymic</h4>
+                        <p th:text="${#strings.abbreviate(author.about ,100)}">About author</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+<div th:insert="blocks/scripts :: scripts"></div>
+</body>
+</html>

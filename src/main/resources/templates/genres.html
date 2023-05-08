@@ -3,16 +3,22 @@
 <head>
     <div th:insert="blocks/headinfo :: headinfo"></div>
     <title>Жанры</title>
+    <!--STOMP-->
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <!--app.js dependance: jquery-->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/genres.js"></script>
 </head>
 <body>
 <!-- ***** Preloader Start ***** -->
-<!--<div id="preloader">-->
-<!--  <div class="jumper">-->
-<!--    <div></div>-->
-<!--    <div></div>-->
-<!--    <div></div>-->
-<!--  </div>-->
-<!--</div>-->
+<div id="preloader">
+  <div class="jumper">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
 <!-- ***** Preloader End ***** -->
 
 <header th:insert="blocks/header :: header"></header>
@@ -31,14 +37,6 @@
     </div>
 </div>
 
-<!--<div class="container"  id="table">-->
-<!--  <div th:each="genre : ${genres}" class="alter">-->
-<!--    <a th:href="@{/products/genre/{id}(id=${genre.id})}" class="nav-link px-2 link-dark">-->
-<!--      <h4 th:text="${genre.title}">Genre name</h4>-->
-<!--    </a>-->
-<!--  </div>-->
-<!--</div>-->
-
 <div class="team-members">
     <div class="container">
         <div class="row">
@@ -49,9 +47,6 @@
             </div>
             <div th:each="genre : ${genres}" class="col-md-4">
                 <div class="team-member">
-                    <div class="thumb-container">
-                        <!--            <img th:src="${author.portrait}" alt="author">-->
-                    </div>
                     <div class="down-content">
                         <a th:href="@{/products/genre/{id}(id=${genre.id})}" class="nav-link px-2 link-dark">
                             <h4 th:text="${genre.title}">Genre name</h4>
@@ -62,6 +57,16 @@
         </div>
     </div>
 </div>
+
+<form sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')" style="text-align: center padding: 150px">
+    <table align="center">
+        <tr>
+            <td>Title</td>
+            <td><input type="text" id="title"></td>
+        </tr>
+    </table>
+    <button id="send" type="submit">Submit</button>
+</form>
 
 <footer th:insert="blocks/footer :: footer"></footer>
 <div th:insert="blocks/scripts :: scripts"></div>
